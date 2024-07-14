@@ -16,7 +16,7 @@ import MyApplications from "./components/Application/MyApplications";
 import PostJob from "./components/Job/PostJob";
 import NotFound from "./components/NotFound/NotFound";
 import MyJobs from "./components/Job/MyJobs";
-
+axios.defaults.withCredentials = true;
 const App = () => {
   const { isAuthorized, setIsAuthorized, setUser } = useContext(Context);
   useEffect(() => {
@@ -34,8 +34,10 @@ const App = () => {
         setIsAuthorized(false);
       }
     };
-    fetchUser();
-  }, [isAuthorized]);
+    if (!isAuthorized) {
+      fetchUser();
+    }
+  }, [isAuthorized, setIsAuthorized, setUser]);
 
   return (
     <>
