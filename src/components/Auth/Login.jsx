@@ -16,6 +16,10 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    if (!role) {
+      toast.error("Please select a role");
+      return;
+    }
     try {
       const { data } = await axios.post(
         `https://hirenet-b.onrender.com/api/v1/user/login`,
@@ -69,6 +73,7 @@ const Login = () => {
                   placeholder="abc@gmail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
                 <MdOutlineMailOutline />
               </div>
@@ -81,6 +86,7 @@ const Login = () => {
                   placeholder="Your Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
                 <RiLock2Fill />
               </div>
