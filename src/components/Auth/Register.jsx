@@ -56,7 +56,7 @@ const Register = () => {
             <img src="/Hirenet.png" alt="logo" />
             <h3>Create a new account</h3>
           </div>
-          <form>
+          <form onSubmit={handleRegister}>
             <div className="inputTag">
               <label>Register As</label>
               <div>
@@ -116,7 +116,7 @@ const Register = () => {
                 <RiLock2Fill />
               </div>
             </div>
-            <button type="submit" onClick={handleRegister}>
+            <button type="submit">
               Register
             </button>
             <Link to={"/login"}>Login Now</Link>
